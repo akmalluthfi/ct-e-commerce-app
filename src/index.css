@@ -3,3 +3,116 @@
 * {
   font-family: 'Quicksand', sans-serif;
 }
+
+/* body {
+  background-color: #eee;
+} */
+
+:root {
+  --gunmetal: #233643;
+}
+
+/* Button : Auth Page*/
+.btn-gunmetal {
+  background-color: var(--gunmetal);
+  border-color: var(--gunmetal);
+}
+
+.btn-gunmetal:hover {
+  background-color: var(--gunmetal);
+  border-color: var(--gunmetal);
+}
+
+.btn-gunmetal:active {
+  background-color: var(--gunmetal);
+  border-color: var(--gunmetal);
+}
+
+.gunmetal {
+  color: var(--gunmetal);
+}
+
+/* MyNavbar : nav-item */
+.nav-item {
+  color: var(--bs-secondary);
+}
+
+.nav-item.active {
+  color: var(--gunmetal);
+}
+
+/* Banner */
+.swiper {
+  /* width: 100%; */
+  /* height: 500px; */
+  --bs-aspect-ratio: 75%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Search Page: Result List */
+.card-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-category:hover {
+  border: 1px solid var(--gunmetal);
+}
+
+/* Input counter on Cart page */
+.cart-counter {
+  border: none;
+  border-bottom: var(--bs-border-width) var(--bs-border-style)
+    var(--bs-border-color) !important;
+  text-align: center;
+  width: 3rem;
+}
+
+.cart-counter:focus-visible {
+  border-bottom: var(--bs-border-width) var(--bs-border-style)
+    var(--bs-border-color) !important;
+  outline: none;
+}
+
+/* utility */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.object-position-center {
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .position-lg-static {
+    position: static !important;
+  }
+}
