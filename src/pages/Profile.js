@@ -9,9 +9,9 @@ export default function Profile() {
             src='https://source.unsplash.com/random/?person'
             alt=''
             className='object-fit-cover object-position-center rounded-circle mb-3'
-            style={{ width: 150, height: 150 }}
+            style={{ width: 150, height: 150, cursor: 'pointer' }}
           />
-          <h6>Change</h6>
+          <h6 style={{ cursor: 'pointer' }}>Change</h6>
         </Form.Label>
         <Form.Control type='file' size='sm' className='d-none' name='picture' />
       </Form.Group>

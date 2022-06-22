@@ -32,15 +32,6 @@
   color: var(--gunmetal);
 }
 
-/* MyNavbar : nav-item */
-.nav-item {
-  color: var(--bs-secondary);
-}
-
-.nav-item.active {
-  color: var(--gunmetal);
-}
-
 /* Banner */
 .swiper {
   /* width: 100%; */

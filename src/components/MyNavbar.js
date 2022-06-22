@@ -21,15 +21,15 @@ export default function MyNavbar() {
           />
         </Navbar.Brand>
         <Nav>
-          <NavLink to='/' className='text-decoration-none p-2 nav-item'>
+          <NavLink to='/' className='text-decoration-none p-2 link-dark'>
             {({ isActive }) =>
               isActive ? <HouseFill size={24} /> : <House size={24} />
             }
           </NavLink>
-          <NavLink to='/search' className='text-decoration-none p-2 nav-item'>
+          <NavLink to='/search' className='text-decoration-none p-2 link-dark'>
             <Search size={24} />
           </NavLink>
-          <NavLink to='/cart' className='text-decoration-none p-2 nav-item'>
+          <NavLink to='/cart' className='text-decoration-none p-2 link-dark'>
             {({ isActive }) =>
               isActive ? <CartFill size={24} /> : <Cart size={24} />
             }

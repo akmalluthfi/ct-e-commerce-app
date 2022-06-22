@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import {
   BoxArrowRight,
@@ -9,16 +9,32 @@ import {
 import { Outlet } from 'react-router-dom';
 import ProfileMenuItem from '../components/ProfileMenuItem';
 import { NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function User() {
   const btnToggle = useRef(null);
+  const [navExpand, setNavExpand] = useState(false);
+
+  const handleLogout = () => {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Logout',
+      text: 'Are you sure want to logout?',
+      allowOutsideClick: false,
+      showDenyButton: true,
+      denyButtonText: 'Logout',
+      confirmButtonText: 'Cancel',
+    }).then((result) => {
+      console.log(result);
+    });
+  };
 
   return (
     <Container>
-      <Row className=''>
+      <Row>
         <Col xs={12} md={4}>
           <Navbar
-            collapseOnSelect={true}
+            expanded={navExpand}
             expand='md'
             onToggle={(toggle) =>
               (btnToggle.current.style.transform = toggle
@@ -32,6 +48,8 @@ export default function User() {
                 aria-controls='profile-nav'
                 as='div'
                 className='border-0 col text-end p-0'
+                onClick={() => setNavExpand((prev) => !prev)}
+                style={{ cursor: 'pointer' }}
               >
                 <CaretRightFill
                   ref={btnToggle}
@@ -41,7 +59,13 @@ export default function User() {
               </Navbar.Toggle>
               <Navbar.Collapse className='w-100' id='profile-nav'>
                 <Nav className='flex-column w-100' defaultActiveKey='profile'>
-                  <NavLink to='profile' className='nav-link'>
+                  <NavLink
+                    to='profile'
+                    className='nav-link'
+                    onClick={() =>
+                      window.screen.availWidth < 768 ? setNavExpand(false) : ''
+                    }
+                  >
                     <ProfileMenuItem
                       name='Profile'
                       icon={
@@ -49,7 +73,13 @@ export default function User() {
                       }
                     />
                   </NavLink>
-                  <NavLink to='order' className='nav-link'>
+                  <NavLink
+                    to='order'
+                    className='nav-link'
+                    onClick={() =>
+                      window.screen.availWidth < 768 ? setNavExpand(false) : ''
+                    }
+                  >
                     <ProfileMenuItem
                       name='My Orders'
                       icon={
@@ -60,7 +90,8 @@ export default function User() {
                       }
                     />
                   </NavLink>
-                  <Nav.Link>
+                  {/* Login */}
+                  <Nav.Link onClick={handleLogout}>
                     <ProfileMenuItem
                       name='Logout'
                       icon={
@@ -77,7 +108,7 @@ export default function User() {
             </Container>
           </Navbar>
         </Col>
-        <Col md={8} className='border'>
+        <Col md={8}>
           <Outlet />
         </Col>
       </Row>

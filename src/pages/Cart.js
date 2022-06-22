@@ -8,7 +8,7 @@ export default function Cart() {
   return (
     <Container>
       <h1 className='my-3'>My Cart</h1>
-      <Row className='align-items-start'>
+      <Row className='align-items-start' style={{ marginBottom: '7.5rem' }}>
         <Col xs={12} md={8}>
           {carts.map((item, i) => (
             <CartItem name={item} key={i} />

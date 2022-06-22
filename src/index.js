@@ -14,6 +14,7 @@ import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import Order from './pages/Order';
+import OrderDetail from './pages/OrderDetail';
 
 // Style
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -33,6 +34,7 @@ root.render(
             <Route path='order' element={<Order />} />
           </Route>
           <Route path='/cart' element={<Cart />} />
+          <Route path='/user/order/:id' element={<OrderDetail />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

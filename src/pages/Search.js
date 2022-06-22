@@ -117,7 +117,7 @@ export default function Search() {
               </Offcanvas>
             </Col>
           </Row>
-          <Row>{content()}</Row>
+          <Row>{<SearchWaiting />}</Row>
         </Col>
       </Row>
     </Container>
