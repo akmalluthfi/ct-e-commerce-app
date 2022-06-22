@@ -14,18 +14,28 @@
 
 /* Button : Auth Page*/
 .btn-gunmetal {
-  background-color: var(--gunmetal);
-  border-color: var(--gunmetal);
+  background-color: var(--gunmetal) !important;
+  border-color: var(--gunmetal) !important;
 }
 
 .btn-gunmetal:hover {
-  background-color: var(--gunmetal);
-  border-color: var(--gunmetal);
+  background-color: var(--gunmetal) !important;
+  border-color: var(--gunmetal) !important;
+}
+
+.btn-gunmetal:focus {
+  background-color: var(--gunmetal) !important;
+  border-color: var(--gunmetal) !important;
+  box-shadow: none;
+}
+
+.btn-gunmetal:active:focus {
+  box-shadow: none;
 }
 
 .btn-gunmetal:active {
-  background-color: var(--gunmetal);
-  border-color: var(--gunmetal);
+  background-color: var(--gunmetal) !important;
+  border-color: var(--gunmetal) !important;
 }
 
 .gunmetal {

@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 import EmptyCart from './EmptyCart';
 
@@ -27,7 +28,9 @@ export default function Cart() {
               <h5 className='fw-bold'>Rp15.000</h5>
             </Col>
           </Row>
-          <Button className='btn-gunmetal w-100'>Checkout</Button>
+          <Link to={'/checkout'}>
+            <Button className='btn-gunmetal w-100'>Checkout</Button>
+          </Link>
         </Col>
       </Row>
     </Container>

@@ -19,6 +19,7 @@ import OrderDetail from './pages/OrderDetail';
 // Style
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import Checkout from './pages/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,6 +36,7 @@ root.render(
           </Route>
           <Route path='/cart' element={<Cart />} />
           <Route path='/user/order/:id' element={<OrderDetail />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

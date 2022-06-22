@@ -23,16 +23,16 @@ export default function CartItem(props) {
         </Row>
         <Row className='align-items-center justify-content-end'>
           <Col xs='auto'>
-            <PlusSquare size={24} />
+            <PlusSquare size={24} role='button' />
           </Col>
           <Col xs='auto' className='p-0'>
             <input type='number' defaultValue={1} className='cart-counter' />
           </Col>
           <Col xs='auto'>
-            <DashSquare size={24} />
+            <DashSquare size={24} role='button' />
           </Col>
           <Col xs='auto text-danger'>
-            <Trash size={24} />
+            <Trash size={24} role='button' />
           </Col>
         </Row>
       </Card.Body>
