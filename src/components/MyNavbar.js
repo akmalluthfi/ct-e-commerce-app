@@ -7,8 +7,12 @@ import {
   CartFill,
 } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { CustomerContext } from '../App';
 
 export default function MyNavbar() {
+  const customer = useContext(CustomerContext);
+
   return (
     <Navbar>
       <Container>
@@ -36,9 +40,11 @@ export default function MyNavbar() {
           </NavLink>
           <NavLink to='/user/profile' className='text-decoration-none p-2'>
             <img
-              src='https://source.unsplash.com/random/24x24/?profile'
-              alt='profile'
+              src={customer.picture_url}
+              alt={`${customer.first_name} ${customer.last_name}'s profile`}
               className='rounded-circle'
+              width={24}
+              height={24}
             />
           </NavLink>
         </Nav>
