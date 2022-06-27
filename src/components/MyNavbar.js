@@ -41,7 +41,7 @@ export default function MyNavbar() {
           <NavLink to='/user/profile' className='text-decoration-none p-2'>
             <img
               src={customer.picture_url}
-              alt={`${customer.first_name} ${customer.last_name}'s profile`}
+              alt={`${customer.first_name} ${customer.surname}'s profile`}
               className='rounded-circle'
               width={24}
               height={24}
