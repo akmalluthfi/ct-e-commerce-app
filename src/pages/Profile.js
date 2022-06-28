@@ -8,13 +8,12 @@ import axios from 'axios';
 import { getAccTk } from '../models/storage';
 
 export default function Profile() {
-  const customer = useContext(CustomerContext);
+  const { data: customer, setData: setCustomer } = useContext(CustomerContext);
   // ref
   const firstName = useRef(null);
   const surName = useRef(null);
   const email = useRef(null);
   const [isLoading, setLoading] = useState(false);
-  const [picture, setPicture] = useState(customer.picture_url);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -66,12 +65,8 @@ export default function Profile() {
   };
 
   const onChange = async (imageList) => {
-    console.log(imageList[0]);
-    console.log('yay');
-
     const data = new FormData();
     data.append('picture', imageList[0].file);
-
     try {
       const url =
         'http://www.localhost:8080/MagangCrosstechno/e-commerce/api/customers/profile/picture';
@@ -85,9 +80,11 @@ export default function Profile() {
 
       const response = await axios.post(url, data, config);
 
-      if (!response.success) return new Error('Gambar gagal diupload');
+      if (!response.data.success) return new Error('Gambar gagal diupload');
 
-      setPicture(imageList[0].data_url);
+      setCustomer((prev) => {
+        return { ...prev, picture_url: imageList[0].data_url };
+      });
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +97,7 @@ export default function Profile() {
           <Form.Group controlId='picture' className='mb-3 text-center'>
             <Form.Label onClick={onImageUpload} {...dragProps}>
               <img
-                src={picture}
+                src={customer.picture_url}
                 alt={`${customer.first_name} ${customer.surname} profile`}
                 className='object-fit-cover object-position-center rounded-circle mb-3'
                 style={{ width: 150, height: 150, cursor: 'pointer' }}
@@ -153,8 +150,4 @@ export default function Profile() {
       </Form>
     </Container>
   );
-}
-
-async function handleOnChange(event) {
-  console.log('yay');
 }

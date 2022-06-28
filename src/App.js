@@ -36,7 +36,7 @@ export default function App() {
   if (!data) return <LoadingPage />;
 
   return (
-    <CustomerContext.Provider value={data}>
+    <CustomerContext.Provider value={{ data, setData }}>
       <header>
         <MyNavbar />
       </header>

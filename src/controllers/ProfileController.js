@@ -20,7 +20,7 @@ export async function updateProfile(first_name, surname, email) {
       config
     );
 
-    if (!data.success) return { success: data.success, message: data.message };
+    return data;
   } catch (error) {
     console.log(error);
   }

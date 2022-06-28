@@ -11,13 +11,23 @@ export default function OrderProductItem() {
           className='rounded'
         />
       </Col>
+      {/* <Col>
+      </Col> */}
       <Col>
-        <h5 className='fw-semibold'>Xiaomi redmi 4x 3/32</h5>
-        <h6 className='invisible'>...</h6>
+        <Row className='justify-content-center h-100 flex-column'>
+          <Col xs='auto'>
+            <h5 className='fw-semibold text-start m-0'>Xiaomi redmi 4x 3/32</h5>
+            <h6 className='fw-semibold text-muted'>Rp.23.110</h6>
+          </Col>
+        </Row>
       </Col>
-      <Col xs='auto' className='text-end'>
-        <h5 className='fw-semibold'>Rp12.320</h5>
-        <h6 className='text-muted'>Qty: 1</h6>
+      <Col xs='auto'>
+        <Row className='justify-content-center text-end flex-column h-100'>
+          <Col xs='auto'>
+            <h5 className='fw-semibold'>Rp12.320</h5>
+            <h6 className='text-muted'>Qty: 1</h6>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

@@ -11,7 +11,7 @@ import { useContext } from 'react';
 import { CustomerContext } from '../App';
 
 export default function MyNavbar() {
-  const customer = useContext(CustomerContext);
+  const { data: customer } = useContext(CustomerContext);
 
   return (
     <Navbar>
