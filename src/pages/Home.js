@@ -6,7 +6,7 @@ import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useEffect, useState } from 'react';
-import { getAccTk } from '../models/storage';
+import { getAccTk, getApiKey, getBaseUrl } from '../models/storage';
 
 export default function Home() {
   const [banners, setBanners] = useState(null);
@@ -14,23 +14,19 @@ export default function Home() {
 
   useEffect(() => {
     const getBanners = () => {
-      const url =
-        'http://localhost:8080/MagangCrosstechno/e-commerce/api/banners';
+      const url = `${getBaseUrl()}/banners`;
       const headers = {
         'Content-Type': 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao',
+        Authorization: `Bearer ${getApiKey}`,
       };
       return axios.get(url, { headers });
     };
 
     const getCategories = () => {
-      const url =
-        'http://localhost:8080/MagangCrosstechno/e-commerce/api/merchants/categories';
+      const url = `${getBaseUrl()}/merchants/categories`;
       const headers = {
         'Content-Type': 'application/json',
-        'x-api-key':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao',
+        'x-api-key': getApiKey(),
         'access-token': getAccTk(),
       };
       return axios.get(url, { headers });

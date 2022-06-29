@@ -33,3 +33,11 @@ export function getDecodedAccTk() {
   if (!accTk) return false;
   return jwt_decode(accTk);
 }
+
+export function getApiKey() {
+  return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao';
+}
+
+export function getBaseUrl() {
+  return 'http://localhost:8080/MagangCrosstechno/e-commerce/api';
+}

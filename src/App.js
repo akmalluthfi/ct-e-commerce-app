@@ -2,7 +2,7 @@ import MyNavbar from './components/MyNavbar';
 import { Outlet } from 'react-router';
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { getAccTk } from './models/storage';
+import { getAccTk, getApiKey, getBaseUrl } from './models/storage';
 import LoadingPage from './pages/LoadingPage';
 
 export const CustomerContext = createContext(null);
@@ -14,12 +14,10 @@ export default function App() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const url =
-          'http://localhost:8080/MagangCrosstechno/e-commerce/api/customers/profile';
+        const url = `${getBaseUrl()}/customers/profile`;
         const config = {
           headers: {
-            'x-api-key':
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao',
+            'x-api-key': getApiKey(),
             'access-token': getAccTk() ?? '',
           },
         };

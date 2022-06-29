@@ -1,15 +1,14 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { getApiKey, getBaseUrl } from '../models/storage';
 
 export default async function RegisterController(email, password) {
   try {
-    const url =
-      'http://localhost:8080/MagangCrosstechno/e-commerce/api/customers/register';
+    const url = `${getBaseUrl()}/customers/register`;
     const data = { email, password };
     const config = {
       headers: {
-        'x-api-key':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao',
+        'x-api-key': getApiKey(),
       },
     };
 

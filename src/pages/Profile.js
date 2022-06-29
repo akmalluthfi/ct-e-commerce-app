@@ -5,7 +5,7 @@ import { CustomerContext } from '../App';
 import { updateProfile } from '../controllers/ProfileController';
 import ImageUploading from 'react-images-uploading';
 import axios from 'axios';
-import { getAccTk } from '../models/storage';
+import { getAccTk, getApiKey, getBaseUrl } from '../models/storage';
 
 export default function Profile() {
   const { data: customer, setData: setCustomer } = useContext(CustomerContext);
@@ -68,12 +68,10 @@ export default function Profile() {
     const data = new FormData();
     data.append('picture', imageList[0].file);
     try {
-      const url =
-        'http://www.localhost:8080/MagangCrosstechno/e-commerce/api/customers/profile/picture';
+      const url = `${getBaseUrl()}/customers/profile/picture`;
       const config = {
         headers: {
-          'x-api-key':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJjdCJ9.kwlZao8nDQ3By0BdR5ayhgxg8CPxnxvrCoNO8XIgPao',
+          'x-api-key': getApiKey(),
           'access-token': getAccTk() ?? '',
         },
       };
