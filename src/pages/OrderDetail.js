@@ -1,4 +1,4 @@
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { ArrowLeft } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import OrderProductItem from '../components/OrderProductItem';
