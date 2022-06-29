@@ -1,10 +1,42 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { ArrowLeft } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import OrderProductItem from '../components/OrderProductItem';
+import { getAccTk, getApiKey, getBaseUrl } from '../models/storage';
 
 export default function OrderDetail() {
-  let orderProducts = ['Ayam diPanggang', 'Nasi diKebuli', 'Nasi diGoreng'];
+  const params = useParams();
+  const [order, setOrder] = useState(null);
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const url = `${getBaseUrl()}/orders/${params.id}`;
+        const headers = {
+          'Content-Type': 'application/json',
+          'x-api-key': getApiKey(),
+          'access-token': getAccTk(),
+        };
+
+        const response = await axios.get(url, { headers });
+
+        if (!response.data.success) throw new Error(response.data.message);
+        setOrder(response.data.order);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetch();
+  }, []);
+
+  if (!order) return '';
+
+  let subTotalProduct = 0;
+  order.products.forEach((product) => {
+    subTotalProduct += product.subTotal;
+  });
 
   return (
     <Container>
@@ -25,9 +57,9 @@ export default function OrderDetail() {
               <Card.Title>
                 <h3>General Information</h3>
               </Card.Title>
-              <Card.Text>
-                <h5>John Connor</h5>
-                <h5>john@gmail.com</h5>
+              <Card.Text as='div'>
+                <h5>{order.customer.name}</h5>
+                <h5>{order.customer.email}</h5>
                 <h5>Address bla bla bla</h5>
                 <h5>+62 086 3434 3434</h5>
               </Card.Text>
@@ -37,11 +69,11 @@ export default function OrderDetail() {
         <Col xs={12} lg={8}>
           <Card className='mb-3'>
             <Card.Header>
-              <h3 className='m-0'>Kelontong Shop</h3>
+              <h3 className='m-0'>{order.merchant.name}</h3>
             </Card.Header>
             <Card.Body>
-              {orderProducts.map((orderProduct, i) => (
-                <OrderProductItem />
+              {order.products.map((orderProduct, i) => (
+                <OrderProductItem ordered={orderProduct} key={i} />
               ))}
             </Card.Body>
           </Card>
@@ -54,7 +86,7 @@ export default function OrderDetail() {
                   <h5 className='m-0'>Sub Total</h5>
                 </Col>
                 <Col xs='auto'>
-                  <h5 className='m-0'>Rp15.000</h5>
+                  <h5 className='m-0'>Rp{subTotalProduct}</h5>
                 </Col>
               </Row>
               <Row>
@@ -70,7 +102,7 @@ export default function OrderDetail() {
                   <h4 className='m-0 fw-bold text-muted'>Total</h4>
                 </Col>
                 <Col xs='auto'>
-                  <h4 className='m-0 fw-bold'>Rp15.000</h4>
+                  <h4 className='m-0 fw-bold'>Rp{order.total}</h4>
                 </Col>
               </Row>
             </Card.Body>

@@ -17,7 +17,7 @@ export default function Home() {
       const url = `${getBaseUrl()}/banners`;
       const headers = {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getApiKey}`,
+        Authorization: `Bearer ${getApiKey()}`,
       };
       return axios.get(url, { headers });
     };
