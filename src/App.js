@@ -4,7 +4,6 @@ import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAccTk, getApiKey, getBaseUrl } from './models/storage';
 import LoadingPage from './pages/LoadingPage';
-import { useLocation, Navigate } from 'react-router-dom';
 
 export const CustomerContext = createContext(null);
 

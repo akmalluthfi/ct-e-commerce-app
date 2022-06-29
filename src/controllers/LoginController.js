@@ -4,7 +4,7 @@ import { getApiKey, getBaseUrl, setAccTk } from '../models/storage';
 
 export default async function LoginController(email, password) {
   try {
-    const url = `${getBaseUrl}/customers/login`;
+    const url = `${getBaseUrl()}/customers/login`;
 
     const config = {
       headers: {
