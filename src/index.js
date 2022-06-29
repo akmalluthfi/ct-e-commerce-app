@@ -34,7 +34,14 @@ root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<App />}>
+      <Route
+        path='/'
+        element={
+          <RequireAuth>
+            <App />
+          </RequireAuth>
+        }
+      >
         <Route
           path='/'
           element={

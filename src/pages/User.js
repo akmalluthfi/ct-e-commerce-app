@@ -10,6 +10,13 @@ import { Outlet } from 'react-router-dom';
 import ProfileMenuItem from '../components/ProfileMenuItem';
 import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import {
+  getAccTk,
+  getApiKey,
+  getBaseUrl,
+  removeAccTk,
+} from '../models/storage';
+import axios from 'axios';
 
 export default function User() {
   const btnToggle = useRef(null);
@@ -24,8 +31,33 @@ export default function User() {
       showDenyButton: true,
       denyButtonText: 'Logout',
       confirmButtonText: 'Cancel',
-    }).then((result) => {
-      console.log(result);
+    }).then(async (result) => {
+      if (result.isDenied) {
+        try {
+          // call api logout
+          const url = `${getBaseUrl()}/customers/logout`;
+          const headers = {
+            'Content-Type': 'application/json',
+            'x-api-key': getApiKey(),
+            'access-token': getAccTk(),
+          };
+
+          const response = await axios.post(url, null, { headers });
+
+          if (!response.data.success) throw new Error(response.data.message);
+
+          if (!removeAccTk()) throw new Error('Logout Failed');
+          // hapus local storange
+          // pindahkan halaman ke login
+          window.location.replace('/login');
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong!',
+            text: error,
+          });
+        }
+      }
     });
   };
 

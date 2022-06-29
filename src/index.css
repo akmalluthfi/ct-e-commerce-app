@@ -102,6 +102,12 @@
   width: 3rem;
 }
 
+.cart-counter::-webkit-outer-spin-button,
+.cart-counter::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .cart-counter:focus-visible {
   border-bottom: var(--bs-border-width) var(--bs-border-style)
     var(--bs-border-color) !important;
